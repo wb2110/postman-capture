@@ -662,6 +662,12 @@ namespace CefSharp.WinForms.Example
                 info.Add("_postman_id", Guid.NewGuid().ToString());
                 info.Add("name", name);
                 info.Add("schema", "https://schema.getpostman.com/json/collection/v2.1.0/collection.json");
+                if (postman.ContainsKey("name"))
+                {
+                    postman["info"] = info;
+                    return;
+                }
+                
                 postman.Add("info", info);
                 postman.Add("protocolProfileBehavior", new JObject());
             }

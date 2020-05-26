@@ -27,8 +27,10 @@ namespace CefSharp.WinForms.Example
             if (string.IsNullOrEmpty(ea.text)) {
                 MessageBox.Show("输入个名字吧!");
             }
-
-            this.onClose.Invoke(this, ea);
+            if (this.onClose != null) {
+                this.onClose.Invoke(this, ea);
+            }
+            
             this.Close();
         }
         public void setText(string s) {
