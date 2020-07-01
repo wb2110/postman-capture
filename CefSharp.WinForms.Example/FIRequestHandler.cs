@@ -61,7 +61,7 @@ namespace CefSharp.WinForms.Example
 			},
 			"response": []
 		}*/
-            if (request.Url.Contains("/api/fi")==false) {
+            if (request.Url.Contains("/api/fi")==false&&request.Url.Contains("/api/bf")==false) {
                 return null;
             }
             var bstart = form.bStart;
@@ -109,6 +109,9 @@ namespace CefSharp.WinForms.Example
                     var elements = postData.Elements;
 
                     var charSet = request.GetCharSet();
+                    if (charSet == null) {
+                        charSet = "UTF-8";
+                    }
 
                     foreach (var element in elements)
                     {
