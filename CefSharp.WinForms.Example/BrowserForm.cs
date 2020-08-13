@@ -667,9 +667,17 @@ namespace CefSharp.WinForms.Example
                     postman["info"] = info;
                     return;
                 }
-                
-                postman.Add("info", info);
-                postman.Add("protocolProfileBehavior", new JObject());
+
+                if (postman.ContainsKey("info"))
+                {
+                    postman["info"] = info;
+                    postman["protocolProfileBehavior"]= new JObject();
+                }
+                else {
+                    postman.Add("info", info);
+                    postman.Add("protocolProfileBehavior", new JObject());
+                }
+               
             }
             else {
                 this.start.Text = "开始";
